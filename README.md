@@ -26,7 +26,7 @@ npm start                   # http://localhost:3000
 
 Environment variables (`.env`): `MONGO_URI` and `JWT_SECRET` are required; `JWT_LIFETIME` (default `1d`) and `PORT` (default `3000`) are optional.
 
-Swagger docs are at `http://localhost:3000/api-docs` (non-production only). Regenerate them with `npm run swagger`. To call protected endpoints there: log in via `/auth/login`, click **Authorize**, and paste the token (without the `Bearer ` prefix).
+Swagger docs are at `http://localhost:3000/api-docs` (non-production only). To call protected endpoints there: log in via `/auth/login`, click **Authorize**, and paste the token (without the `Bearer ` prefix).
 
 Demo accounts after `npm run seed` (password `password123`): `sakata@yorozuya.jp` and `saturosuzuki@yahoo.co.jp`.
 
