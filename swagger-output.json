@@ -384,13 +384,6 @@
         "description": "",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "search",
             "in": "query",
             "schema": {
