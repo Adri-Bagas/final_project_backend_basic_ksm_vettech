@@ -1,0 +1,17 @@
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server:9.0.8-ubi9-slim
+    container_name: mongodb-community
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+
+volumes:
+  mongodb_data:
+  mongodb_config:
