@@ -81,6 +81,32 @@ export const getWaifu = async (req, res) => {
 };
 
 export const createWaifu = async (req, res) => {
+  /*
+    #swagger.tags = ['Waifu']
+    #swagger.security = [{ bearerAuth: [] }]
+    #swagger.requestBody = {
+      required: true,
+      content: {
+        'multipart/form-data': {
+          schema: {
+            type: 'object',
+            required: ['name', 'series', 'media'],
+            properties: {
+              name: { type: 'string' },
+              series: { type: 'string' },
+              series_type: { type: 'string' },
+              tags: { type: 'string', description: 'Tags (same format resolveTags expects)' },
+              media: {
+                type: 'array',
+                maxItems: 5,
+                items: { type: 'string', format: 'binary' }
+              }
+            }
+          }
+        }
+      }
+    }
+  */
   const files = req.files || [];
   try {
     const { name, series, series_type, tags } = req.body;
@@ -125,6 +151,26 @@ export const createWaifu = async (req, res) => {
 };
 
 export const updateWaifu = async (req, res) => {
+  /*
+      #swagger.tags = ['Waifu']
+      #swagger.security = [{ bearerAuth: [] }]
+      #swagger.parameters['id'] = { in: 'path', required: true, type: 'string' }
+      #swagger.requestBody = {
+        content: {
+          'multipart/form-data': {
+            schema: {
+              type: 'object',
+              properties: {
+                name: { type: 'string' },
+                series: { type: 'string' },
+                series_type: { type: 'string' },
+                tags: { type: 'string' }
+              }
+            }
+          }
+        }
+      }
+    */
   try {
     const { id } = req.params;
     if (!mongoose.isValidObjectId(id)) {
@@ -192,6 +238,29 @@ export const updateWaifu = async (req, res) => {
 };
 
 export const addWaifuMedia = async (req, res) => {
+  /*
+      #swagger.tags = ['Waifu']
+      #swagger.security = [{ bearerAuth: [] }]
+      #swagger.parameters['id'] = { in: 'path', required: true, type: 'string' }
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          'multipart/form-data': {
+            schema: {
+              type: 'object',
+              required: ['media'],
+              properties: {
+                media: {
+                  type: 'array',
+                  maxItems: 5,
+                  items: { type: 'string', format: 'binary' }
+                }
+              }
+            }
+          }
+        }
+      }
+    */
   const files = req.files || [];
   try {
     const { id } = req.params;

@@ -241,29 +241,52 @@
         }
       },
       "post": {
+        "tags": [
+          "Waifu"
+        ],
         "description": "",
         "responses": {
           "default": {
             "description": ""
           }
         },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
+          "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
+                "required": [
+                  "name",
+                  "series",
+                  "media"
+                ],
                 "properties": {
                   "name": {
-                    "example": "any"
+                    "type": "string"
                   },
                   "series": {
-                    "example": "any"
+                    "type": "string"
                   },
                   "series_type": {
-                    "example": "any"
+                    "type": "string"
                   },
                   "tags": {
-                    "example": "any"
+                    "type": "string",
+                    "description": "Tags (same format resolveTags expects)"
+                  },
+                  "media": {
+                    "type": "array",
+                    "maxItems": 5,
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
                   }
                 }
               }
@@ -302,6 +325,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "Waifu"
+        ],
         "description": "",
         "parameters": [
           {
@@ -318,23 +344,28 @@
             "description": ""
           }
         },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "name": {
-                    "example": "any"
+                    "type": "string"
                   },
                   "series": {
-                    "example": "any"
+                    "type": "string"
                   },
                   "series_type": {
-                    "example": "any"
+                    "type": "string"
                   },
                   "tags": {
-                    "example": "any"
+                    "type": "string"
                   }
                 }
               }
@@ -363,6 +394,9 @@
     },
     "/waifus/{id}/media": {
       "post": {
+        "tags": [
+          "Waifu"
+        ],
         "description": "",
         "parameters": [
           {
@@ -377,6 +411,34 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "media"
+                ],
+                "properties": {
+                  "media": {
+                    "type": "array",
+                    "maxItems": 5,
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
